@@ -2,22 +2,19 @@ package com.example.demo.services;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.example.demo.Models.EventModel;
 import com.example.demo.dto.EventDto;
 import com.example.demo.repositories.IEventDao;
 import com.example.demo.wrapper.EventWrapper;
 
-@Service
 public class EventServiceImp implements IEventService {
 
     IEventDao eventDao;
 
     @Override
-    public EventDto findByEventId(Long id) {
-        EventModel eventModel = eventDao.getById(id);   
-        return EventWrapper.eventEntityToDto(eventModel);
+    public EventModel findById(Long id) {
+        EventModel eventModel = eventDao.findById(id).orElse(new EventModel());   
+        return eventModel;
     }
 
     @Override
@@ -32,13 +29,10 @@ public class EventServiceImp implements IEventService {
         eventDto = EventWrapper.eventEntityToDto(event);
         return eventDto;
     }
-    // public List<EventModel> findByState(boolean state){
-    //     return (List<EventModel>) eventDao.findByState(state);
-    // }
 
     @Override
     public EventDto update(EventDto eventDto) {
-        EventModel eventExist = eventDao.getById(eventDto.getId());
+        EventModel eventExist = eventDao.findById(eventDto.getId()).orElse(new EventModel());
         if (eventExist == null) {
             return null;
         } else {

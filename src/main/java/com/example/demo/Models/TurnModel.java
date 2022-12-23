@@ -6,11 +6,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import lombok.Data;
 
 @Entity
 @Table(name = "Turn")
-@Data
 public class TurnModel implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -25,5 +23,41 @@ public class TurnModel implements Serializable {
     @ManyToOne
     @JoinColumn(name="organization",referencedColumnName="Code")
     private OrganizationModel organizationModel;
+    public TurnModel() {
+    }
+    public TurnModel(long idTurn, EventModel event, PersonModel personModel, OrganizationModel organizationModel) {
+        IdTurn = idTurn;
+        this.event = event;
+        this.personModel = personModel;
+        this.organizationModel = organizationModel;
+    }
+    public static long getSerialversionuid() {
+        return serialVersionUID;
+    }
+    public long getIdTurn() {
+        return IdTurn;
+    }
+    public void setIdTurn(long idTurn) {
+        IdTurn = idTurn;
+    }
+    public EventModel getEvent() {
+        return event;
+    }
+    public void setEvent(EventModel event) {
+        this.event = event;
+    }
+    public PersonModel getPersonModel() {
+        return personModel;
+    }
+    public void setPersonModel(PersonModel personModel) {
+        this.personModel = personModel;
+    }
+    public OrganizationModel getOrganizationModel() {
+        return organizationModel;
+    }
+    public void setOrganizationModel(OrganizationModel organizationModel) {
+        this.organizationModel = organizationModel;
+    }
 
+    
 }

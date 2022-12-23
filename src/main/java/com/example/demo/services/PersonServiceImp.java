@@ -11,11 +11,6 @@ public class PersonServiceImp implements IPersonService{
 
     IPersonDao personDao;
 
-    @Override
-    public PersonDto findCode(Long Dni) {
-        PersonModel personModel = personDao.findCode(Dni); 
-        return PersonWrapper.EntityToDto(personModel);
-    }
 
     @Override
     public List<PersonModel> findAll() {
@@ -31,25 +26,26 @@ public class PersonServiceImp implements IPersonService{
         return personDto;
     }
 
-    public List<PersonModel> findLastName(String lastname){
-        List<PersonModel> persons = personDao.findLastName(lastname);
-    }
+    // public List<PersonModel> findLastName(String Lastname){
+    //     List<PersonModel> persons = personDao.findLastname(Lastname);
+    //     return persons;
+    // }
 
 
 
-    @Override
-    public PersonDto update(PersonDto personDto) {
-        PersonModel personExist = personDao.findCode(personDto.getDni());
-        if(personExist == null)return null;
-        else{
-            PersonDto person = new PersonDto();
-            person.setDni(personDto.getDni());
-            person.setLastname(personDto.getLastname());
-            person.setName(personDto.getName());
-            person.setPassword(personDto.getPassword());
-            person.setState(personDto.isState());
-            return person;
-        }
-    }
+    // @Override
+    // public PersonDto update(PersonDto personDto) {
+    //     PersonModel personExist = personDao.findPerson(personDto.getDni());
+    //     if(personExist == null)return null;
+    //     else{
+    //         PersonDto person = new PersonDto();
+    //         person.setDni(personDto.getDni());
+    //         person.setLastname(personDto.getLastname());
+    //         person.setName(personDto.getName());
+    //         person.setPassword(personDto.getPassword());
+    //         person.setState(personDto.isState());
+    //         return person;
+    //     }
+    // }
 
 }

@@ -11,11 +11,11 @@ public class OrganizationServiceImp implements IOrganizationService {
 
     IOrganizationDao organizationDao;
 
-    @Override
-    public OrganizationDto findCode(String Code) {
-        OrganizationModel organizationModel = organizationDao.findCode(Code);
-        return OrganizationWrapper.EntityToDto(organizationModel);
-    }
+    // @Override
+    // public OrganizationModel findByCode(String Code) {
+    //     OrganizationModel organizationModel = organizationDao.findByCode(Code);
+    //     return organizationModel;
+    // }
 
     @Override
     public List<OrganizationModel> findAll() {
@@ -31,21 +31,21 @@ public class OrganizationServiceImp implements IOrganizationService {
         return organizationDto;
     }
 
-    @Override
-    public OrganizationDto update(OrganizationDto organizationDto) {
-        OrganizationModel organizationExist = organizationDao.findCode(organizationDto.getCode());
-        if (organizationExist == null)
-            return null;
-        else {
-            OrganizationDto organization = new OrganizationDto();
-            organization.setCode(organizationDto.getCode());
-            organization.setCreate_at(organizationDto.getCreate_at());
-            organization.setCuit(organizationDto.getCuit());
-            organization.setDirection(organizationDto.getDirection());
-            organization.setName(organizationDto.getName());
-            organization.setTelephone(organizationDto.getTelephone());
-            return organization;
-        }
-    }
+    // @Override
+    // public OrganizationDto update(OrganizationDto organizationDto) {
+    //     OrganizationModel organizationExist = organizationDao.findByCode(organizationDto.getCode());
+    //     if (organizationExist == null)
+    //         return null;
+    //     else {
+    //         OrganizationDto organization = new OrganizationDto();
+    //         organization.setCode(organizationDto.getCode());
+    //         organization.setCreate(organizationDto.getCreate());
+    //         organization.setCuit(organizationDto.getCuit());
+    //         organization.setDirection(organizationDto.getDirection());
+    //         organization.setName(organizationDto.getName());
+    //         organization.setTelephone(organizationDto.getTelephone());
+    //         return organization;
+    //     }
+    // }
 
 }

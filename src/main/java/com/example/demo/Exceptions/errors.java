@@ -1,7 +1,6 @@
 package com.example.demo.Exceptions;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.dao.DataIntegrityViolationException;
@@ -69,13 +68,13 @@ public class errors extends ResponseEntityExceptionHandler {
         return new ResponseEntity<Object>(response, HttpStatus.CONFLICT);
 	}
 	
-	@ExceptionHandler(javax.validation.ConstraintViolationException.class)
-	public ResponseEntity<Object> constraintViolationException(javax.validation.ConstraintViolationException e){
-        Map<String,Object> response = new HashMap<>();
-        List<String> errorString = e.getConstraintViolations().stream().map(error -> error.getMessage().toString()).collect(Collectors.toList());
-        response.put("message", errorString.toString());
-        return new ResponseEntity<Object>(response, HttpStatus.BAD_REQUEST);
-	}
+	// @ExceptionHandler(javax.validation.ConstraintViolationException.class)
+	// public ResponseEntity<Object> constraintViolationException(javax.validation.ConstraintViolationException e){
+        // Map<String,Object> response = new HashMap<>();
+        // List<String> errorString = e.getConstraintViolations().stream().map(error -> error.getMessage().toString()).collect(Collectors.toList());
+        // response.put("message", errorString.toString());
+        // return new ResponseEntity<Object>(response, HttpStatus.BAD_REQUEST);
+	// }
 	
 	@ExceptionHandler(DataIntegrityViolationException.class)
 	public ResponseEntity<Object> dataIntegrityViolationException(DataIntegrityViolationException e){
